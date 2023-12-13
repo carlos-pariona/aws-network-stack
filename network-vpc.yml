@@ -1,3 +1,7 @@
+Parameters:
+  AppSubnetName:
+    Type: String
+    Description: Ingress the name of the aplication, all lowercase
 Resources:
   # VPC
   MyVPC:
@@ -5,8 +9,13 @@ Resources:
     Properties:
       CidrBlock: 10.0.0.0/16
   # Subnet
-  subappus1:
+  PublicSubnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: 10.0.0.0/24
+      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      Tags:
+        - Key: Name
+          Value: !Sub ${AppSubnetName}-pubsubnet1
+      
