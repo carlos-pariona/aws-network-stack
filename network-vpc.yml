@@ -18,4 +18,12 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub ${AppSubnetName}-pubsubnet1
+  
+  # Internet Gateway
+  InternetGateway:
+    Type: 'AWS::EC2::InternetGateway'
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub ${AppSubnetName}-igw
       
