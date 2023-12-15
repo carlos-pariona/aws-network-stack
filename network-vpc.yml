@@ -26,4 +26,12 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub ${AppSubnetName}-igw
+  
+  # Attach Internet Gateway to VPC
+  AttachGateway:
+    Type: 'AWS::EC2::VPCGatewayAttachment'
+    Properties:
+      VpcId: !Ref MyVPC
+      InternetGatewayId: !Ref InternetGateway
+  
       
