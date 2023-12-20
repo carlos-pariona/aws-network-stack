@@ -43,6 +43,14 @@ Resources:
         - Key: Name
           Value: !Sub ${AppSubnetName}-rt
   
+  # Route Table Association
+  PublicRouteTableAssociation:
+    Type: 'AWS::EC2::SubnetRouteTableAssociation'
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+  
+  
 
   
 
