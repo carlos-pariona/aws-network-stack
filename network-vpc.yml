@@ -50,27 +50,13 @@ Resources:
       SubnetId: !Ref PublicSubnet
       RouteTableId: !Ref PublicRouteTable
   
-
   # Route
-  PrivateRoute:
+  PrivateRouteTable:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
     Properties:
       RouteTableId: !Ref PublicRouteTable
-  
-  # Security Group
-  PublicSecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
-    Properties:
-      GroupDescription: Enable HTTP access via port 80
-      VpcId: !Ref MyVPC
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: '80'
-          ToPort: '80'
-          CidrIp:
-      
-
+      DestinationCidrBlock:
   
 
   
